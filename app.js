@@ -1,7 +1,6 @@
 //reference sites:
 // lipsum.com
 // unsplash.com
-// 
 
 var express = require("express"),
     app = express(),
@@ -44,6 +43,7 @@ app.get("/", function(req, res){
     res.redirect("/blogs");
 });
 
+// Find all blogs
 app.get("/blogs", function(req, res){
     Blog.find({}, function(err, allBlogs){
         if (err){
@@ -74,6 +74,7 @@ app.post("/blogs", function(req, res){
     })
 });
 
+// Find by blog id
 app.get("/blogs/:id", function(req, res) {
     Blog.findById(req.params.id, function(err, foundBlog){
         if(err) {
@@ -95,7 +96,6 @@ app.get("/blogs/:id/edit", function(req, res) {
             res.render("edit", {blog: foundBlog});        
         }
     })
-    
 });
 
 // UPDATE route
